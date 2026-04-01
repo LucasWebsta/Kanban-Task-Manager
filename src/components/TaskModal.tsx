@@ -35,6 +35,7 @@ export default function TaskModal({ task, members, labels, userId, onClose, onUp
   )
   const [saving, setSaving] = useState(false)
   const [deleting, setDeleting] = useState(false)
+  const [confirmingDelete, setConfirmingDelete] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [submittingComment, setSubmittingComment] = useState(false)
   const [newLabelName, setNewLabelName] = useState('')
@@ -99,7 +100,6 @@ export default function TaskModal({ task, members, labels, userId, onClose, onUp
   }
 
   const handleDelete = async () => {
-    if (!confirm('Delete this task?')) return
     setDeleting(true)
     await onDelete(task.id)
     onClose()
@@ -312,17 +312,33 @@ export default function TaskModal({ task, members, labels, userId, onClose, onUp
 
         {tab === 'details' && (
           <div className="flex items-center justify-between px-5 py-4 border-t border-gray-100 bg-gray-50 rounded-b-2xl flex-shrink-0">
-            <button onClick={handleDelete} disabled={deleting}
-              className="text-sm text-rose-500 hover:text-rose-700 font-medium transition disabled:opacity-50">
-              {deleting ? 'Deleting...' : 'Delete task'}
-            </button>
-            <div className="flex gap-2">
-              <button onClick={onClose} className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 font-medium transition">Cancel</button>
-              <button onClick={handleSave} disabled={!title.trim() || saving}
-                className="px-4 py-2 text-sm font-medium bg-brand-500 text-white rounded-lg hover:bg-brand-600 disabled:opacity-50 transition">
-                {saving ? 'Saving...' : 'Save changes'}
-              </button>
-            </div>
+            {confirmingDelete ? (
+              <div className="flex items-center gap-3 w-full">
+                <span className="text-sm text-gray-600 flex-1">Delete this task?</span>
+                <button onClick={() => setConfirmingDelete(false)}
+                  className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 font-medium transition">
+                  Cancel
+                </button>
+                <button onClick={handleDelete} disabled={deleting}
+                  className="px-3 py-1.5 text-sm font-medium bg-rose-500 text-white rounded-lg hover:bg-rose-600 disabled:opacity-50 transition">
+                  {deleting ? 'Deleting...' : 'Yes, delete'}
+                </button>
+              </div>
+            ) : (
+              <>
+                <button onClick={() => setConfirmingDelete(true)}
+                  className="text-sm text-rose-500 hover:text-rose-700 font-medium transition">
+                  Delete task
+                </button>
+                <div className="flex gap-2">
+                  <button onClick={onClose} className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 font-medium transition">Cancel</button>
+                  <button onClick={handleSave} disabled={!title.trim() || saving}
+                    className="px-4 py-2 text-sm font-medium bg-brand-500 text-white rounded-lg hover:bg-brand-600 disabled:opacity-50 transition">
+                    {saving ? 'Saving...' : 'Save changes'}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>
