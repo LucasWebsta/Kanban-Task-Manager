@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Kanban Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Kanban task management application built with React, TypeScript, and Supabase.
 
-Currently, two official plugins are available:
+The application allows users to create, organize, assign, and track tasks through a drag-and-drop board interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Drag-and-drop task management
+* Create, edit, and delete tasks
+* Assign team members to tasks
+* Set priorities and due dates
+* Add labels and comments
+* View task activity history
+* Filter tasks by assignee, priority, label, and due date
+* Search tasks by content
+* Persistent task data using Supabase
+* Optimistic UI updates with rollback on database failure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+* **Frontend:** React, TypeScript
+* **Styling:** Tailwind CSS
+* **Database / Backend:** Supabase
+* **Drag and Drop:** dnd-kit
+* **Build Tool:** Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Purpose
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+I originally built this project in April 2026 as part of a software engineering internship assessment.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The goal was to create a functional task management system while demonstrating full-stack development, database integration, state management, and user interface design.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Running Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/LucasWebsta/Software-Development-Assessment-Challenge.git
+cd Software-Development-Assessment-Challenge
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Author
+
+Lucas Webster
+
+GitHub: https://github.com/LucasWebsta
