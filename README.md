@@ -4,6 +4,8 @@ A full-stack Kanban task management application built with React, TypeScript, an
 
 The application allows users to create, organize, assign, and track tasks through a drag-and-drop board interface.
 
+<img width="1686" height="839" alt="Screenshot 2026-09-16 at 6 36 04 PM" src="https://github.com/user-attachments/assets/c7a84074-e474-4ca6-b53c-592dc2606208" />
+
 ## Features
 
 * Drag-and-drop task management
