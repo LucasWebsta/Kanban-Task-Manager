@@ -36,8 +36,8 @@ The goal was to create a functional task management system while demonstrating f
 Clone the repository:
 
 ```bash
-git clone https://github.com/LucasWebsta/Software-Development-Assessment-Challenge.git
-cd Software-Development-Assessment-Challenge
+git clone https://github.com/LucasWebsta/Kanban-Task-Manager.git
+cd Kanban-Task-Manager
 ```
 
 Install dependencies:
